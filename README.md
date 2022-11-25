@@ -7,6 +7,6 @@ Currently implemented features are:<br>
  
 # Usage
 Simply build using visual studio 2019, and inject `dac-um.dll` into the target process. Only 64-Bit processes are supported!<br>
-On success, you should see a console window similar to the one below. All relevant information will be printed on that console window:
+On success, you should see a console window similar to the one below. All relevant information will be printed on it:
 
 ![This is an image](images/git1.PNG)
