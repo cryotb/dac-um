@@ -4,7 +4,7 @@ DWORD WINAPI TMain(LPVOID lpParam)
 {
     while (true)
     {
-        dat::Think();
+        dac::Think();
         Sleep(5000);
     }
 
@@ -19,7 +19,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        dat::Init();
+        dac::Init();
         CreateThread(0, 0, TMain, hModule, 0, 0);
         break;
     case DLL_THREAD_ATTACH:

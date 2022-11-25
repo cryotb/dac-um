@@ -1,6 +1,6 @@
 #pragma once
 
-namespace dat
+namespace dac
 {
 	void Init();
 	void Think();
@@ -10,6 +10,7 @@ namespace dat
 	auto GetThreads() -> std::vector<DWORD>;
 	u64 GetImageForAddr(u64 addr);
 	bool GenStackTraceForThread(u32 tid, std::vector<u64>& buffer);
+	void** FindThreadInitPtr();
 
 	// logic funcs
 	bool CheckThreadLimits();

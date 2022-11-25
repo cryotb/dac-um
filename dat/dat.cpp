@@ -1,17 +1,19 @@
 #include "pch.h"
 
-void dat::Init()
+void dac::Init()
 {
-	dat::CreateConsole();
+	dac::CreateConsole();
 	printf("%s\n", DAT_WELCOME_MSG);
+
+	hk::Start();
 }
 
-void dat::Think()
+void dac::Think()
 {
 	CheckThreadLimits();
 }
 
-void dat::CreateConsole()
+void dac::CreateConsole()
 {
 	AllocConsole();
 
@@ -19,7 +21,7 @@ void dat::CreateConsole()
 	freopen_s(reinterpret_cast<FILE**>(stdout), "CONOUT$", "w", stdout);
 }
 
-auto dat::GetModules() -> std::vector<MODULEENTRY32>
+auto dac::GetModules() -> std::vector<MODULEENTRY32>
 {
 	std::vector<MODULEENTRY32> result;
 
@@ -46,7 +48,7 @@ auto dat::GetModules() -> std::vector<MODULEENTRY32>
 	return result;
 }
 
-auto dat::GetThreads() -> std::vector<DWORD>
+auto dac::GetThreads() -> std::vector<DWORD>
 {
 	std::vector<DWORD> result;
 
@@ -74,7 +76,7 @@ auto dat::GetThreads() -> std::vector<DWORD>
 	return result;
 }
 
-auto dat::GetImageForAddr(u64 addr) -> u64
+auto dac::GetImageForAddr(u64 addr) -> u64
 {
 	auto modList = GetModules();
 
@@ -89,7 +91,7 @@ auto dat::GetImageForAddr(u64 addr) -> u64
 }
 
 // thank EasyAntiCheat for usage example ;-)
-bool dat::GenStackTraceForThread(u32 tid, std::vector<u64>& buffer)
+bool dac::GenStackTraceForThread(u32 tid, std::vector<u64>& buffer)
 {
 	CONTEXT ctx;
 	memset(&ctx, 0, sizeof(ctx));
@@ -159,4 +161,15 @@ bool dat::GenStackTraceForThread(u32 tid, std::vector<u64>& buffer)
 	}
 
 	return !buffer.empty();
+}
+
+void** dac::FindThreadInitPtr()
+{
+	auto hNTDLL = GetModuleHandle(L"ntdll.dll");
+	if (!hNTDLL) return nullptr;
+
+	auto pfnUserThreadStart = GetProcAddress(hNTDLL, "RtlUserThreadStart");
+	if (!pfnUserThreadStart) return nullptr;
+
+	return reinterpret_cast<void**>(RESOLVE_INSTR(BASE_OF(pfnUserThreadStart) + 7, 3, 7));
 }

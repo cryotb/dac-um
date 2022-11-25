@@ -27,6 +27,9 @@
     <ClInclude Include="log.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="hooks.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -42,6 +45,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="log.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="hooks.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
