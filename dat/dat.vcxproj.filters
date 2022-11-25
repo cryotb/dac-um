@@ -21,7 +21,7 @@
     <ClInclude Include="pch.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="dat.h">
+    <ClInclude Include="dac.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="log.h">
@@ -38,10 +38,10 @@
     <ClCompile Include="pch.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="dat.cpp">
+    <ClCompile Include="dac.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="datc.cpp">
+    <ClCompile Include="dacc.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="log.cpp">

@@ -154,15 +154,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="dat.h" />
+    <ClInclude Include="dac.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="hooks.h" />
     <ClInclude Include="log.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dat.cpp" />
-    <ClCompile Include="datc.cpp" />
+    <ClCompile Include="dac.cpp" />
+    <ClCompile Include="dacc.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="hooks.cpp" />
     <ClCompile Include="log.cpp" />
