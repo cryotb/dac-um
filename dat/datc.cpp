@@ -1,6 +1,6 @@
 #include "pch.h"
 
-auto dat::CheckThreadLimits() -> bool
+bool dat::CheckThreadLimits()
 {
 	auto threadList = GetThreads();
 
