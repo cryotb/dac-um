@@ -23,19 +23,6 @@ auto dat::GetModules() -> std::vector<MODULEENTRY32>
 {
 	std::vector<MODULEENTRY32> result;
 
-	auto procImage = BASE_OF(GetModuleHandle(nullptr));
-	if (!procImage)
-		return result;
-
-	auto procImageDH = reinterpret_cast<PIMAGE_DOS_HEADER>(procImage);
-	auto procImageNH = reinterpret_cast<PIMAGE_NT_HEADERS>(procImage + procImageDH->e_lfanew);
-
-	MODULEENTRY32 procImageMod;
-	procImageMod.dwSize = sizeof(MODULEENTRY32);
-	procImageMod.modBaseAddr = reinterpret_cast<PBYTE>(procImage);
-	procImageMod.modBaseSize = procImageNH->OptionalHeader.SizeOfImage;
-	result.push_back(procImageMod);
-
 	MODULEENTRY32 entry{};
 	entry.dwSize = sizeof(MODULEENTRY32);
 
@@ -46,6 +33,8 @@ auto dat::GetModules() -> std::vector<MODULEENTRY32>
 		CloseHandle(hSnapshot);
 		return result;
 	}
+
+	result.push_back(entry);
 
 	while (Module32Next(hSnapshot, &entry))
 	{
@@ -71,6 +60,8 @@ auto dat::GetThreads() -> std::vector<DWORD>
 		CloseHandle(hSnapshot);
 		return result;
 	}
+
+	result.push_back(entry.th32ThreadID);
 
 	while (Thread32Next(hSnapshot, &entry))
 	{
