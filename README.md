@@ -3,6 +3,7 @@ This is the usermode component of my project DemoAntiCheat.<br>
 I am planning to document existing methods of in-process cheat detection, and maybe add some new (experimental) features later on.<br>
 
 Currently implemented features are:<br>
+ - Thread launch validator (checks start address on new thread launch, and ensures it's backed by an image.)
  - Stack Trace (checks for shellcode execution from manually allocated memory)
  
 # Usage
