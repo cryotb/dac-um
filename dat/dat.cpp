@@ -13,10 +13,7 @@ void dat::Think()
 
 void dat::CreateConsole()
 {
-	auto result = AllocConsole();
-
-	if (result == false && !(GetConsoleWindow() == nullptr))
-		result = true;
+	AllocConsole();
 
 	freopen_s(reinterpret_cast<FILE**>(stdin), "CONIN$", "r", stdin);
 	freopen_s(reinterpret_cast<FILE**>(stdout), "CONOUT$", "w", stdout);
