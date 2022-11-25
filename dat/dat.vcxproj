@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{3fb9b584-81bc-40f4-af35-ac3944c55107}</ProjectGuid>
-    <RootNamespace>dat</RootNamespace>
+    <RootNamespace>dac</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>dac-um</ProjectName>
   </PropertyGroup>
